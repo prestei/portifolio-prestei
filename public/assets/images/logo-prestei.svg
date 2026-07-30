@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 40" fill="none" role="img" aria-label="Prestei">
+  <g fill="#2EA8E6">
+    <circle cx="5.2" cy="11.2" r="4.2"/>
+    <rect x="9.2" y="6.4" width="9.2" height="26.4" rx="4.6" transform="rotate(28 9.2 6.4)"/>
+  </g>
+  <text x="28" y="28.5" font-family="Inter, SF Pro Display, system-ui, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.8">
+    <tspan fill="currentColor">prest</tspan><tspan fill="#2EA8E6">ei</tspan>
+  </text>
+</svg>

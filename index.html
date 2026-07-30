@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Prestei — Soluções inteligentes com Inteligência Artificial. Desenvolvimento de páginas web, sistemas personalizados, aplicativos e soluções baseadas em IA."
+    />
+    <meta name="theme-color" content="#121212" />
+    <meta property="og:title" content="Prestei — Soluções inteligentes com IA" />
+    <meta
+      property="og:description"
+      content="Desenvolvemos páginas web, sistemas personalizados, aplicativos e soluções baseadas em IA para acelerar a transformação digital da sua empresa."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./assets/images/logo-light.png" />
+    <title>Prestei — Engenharia de software sob demanda</title>
+    <link rel="icon" type="image/png" href="./assets/images/logo-light.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Prestei",
+        "url": "https://prestei.com.br",
+        "logo": "./assets/images/logo-light.png",
+        "description": "Soluções inteligentes com Inteligência Artificial. Páginas web, sistemas personalizados, aplicativos e automação.",
+        "email": "contato@prestei.com.br",
+        "sameAs": [
+          "https://instagram.com/",
+          "https://linkedin.com/",
+          "https://github.com/"
+        ]
+      }
+    </script>
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/sections.css" />
+    <link rel="stylesheet" href="./css/effects.css" />
+    <link rel="stylesheet" href="./css/hero.css" />
+    <link rel="stylesheet" href="./css/showcase.css" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("prestei-theme");
+          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = stored || (prefersDark ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true">
+      <div class="atmosphere__glow atmosphere__glow--a"></div>
+      <div class="atmosphere__glow atmosphere__glow--b"></div>
+      <div class="atmosphere__noise"></div>
+    </div>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <header class="nav" id="nav" data-component="Nav">
+      <div class="nav__progress" aria-hidden="true"></div>
+      <div class="container nav__inner">
+        <a class="nav__logo" href="#inicio" aria-label="Prestei — início">
+          <img class="logo logo--light" src="./assets/images/logo-light.png" alt="Prestei" width="140" height="38" />
+          <img class="logo logo--dark" src="./assets/images/logo-dark.png" alt="" width="140" height="38" aria-hidden="true" />
+        </a>
+
+        <nav class="nav__links" aria-label="Principal">
+          <a class="nav__link" href="#sobre">Sobre</a>
+          <a class="nav__link" href="#servicos">Serviços</a>
+          <a class="nav__link" href="#processo">Processo</a>
+          <a class="nav__link" href="#projetos">Projetos</a>
+          <a class="nav__link" href="#tecnologias">Tecnologias</a>
+          <a class="nav__link" href="#contato">Contato</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button class="theme-toggle" type="button" aria-label="Alternar tema" data-theme-toggle>
+            <i data-lucide="moon" class="icon-moon" aria-hidden="true"></i>
+            <i data-lucide="sun" class="icon-sun" aria-hidden="true"></i>
+          </button>
+          <a class="btn btn--primary btn--sm" href="#" data-whatsapp data-magnetic target="_blank" rel="noopener noreferrer">Solicitar orçamento</a>
+          <button class="nav__burger" type="button" aria-label="Abrir menu" aria-expanded="false" data-nav-toggle>
+            <i data-lucide="menu" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav__mobile" id="mobile-menu" hidden>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Processo</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#tecnologias">Tecnologias</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn--primary" href="#contato" style="margin-top: 0.5rem">Solicitar orçamento</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- HERO -->
+      <section class="hero" id="inicio" data-component="Hero" data-hero>
+        <div class="hero__stage" aria-hidden="true">
+          <canvas id="hero-canvas"></canvas>
+          <div class="hero__grid"></div>
+          <div class="hero__veil"></div>
+          <div class="hero__aura"></div>
+        </div>
+
+        <div class="hero__inner">
+          <div class="hero__content" data-hero-content>
+            <div class="hero__live" data-hero-el="badge">
+              <span class="hero__live-dot" aria-hidden="true"></span>
+              Disponível para novos projetos
+            </div>
+
+            <h1 class="hero__title" data-hero-title data-hero-el="title">
+              <span class="hero__line">Software que</span>
+              <span class="hero__line">trabalha pelo</span>
+              <span class="hero__line">seu <em class="hero__accent">negócio</em>.</span>
+            </h1>
+
+            <p class="hero__subtitle" data-hero-el="subtitle">
+              Sites, sistemas e apps sob medida — com engenharia clara,
+              prazo realista e código que a sua operação consegue manter.
+            </p>
+
+            <div class="hero__meta" data-hero-el="chips">
+              <span class="hero-chip"><i data-lucide="globe" aria-hidden="true"></i> Web</span>
+              <span class="hero-chip"><i data-lucide="panels-top-left" aria-hidden="true"></i> Sistemas</span>
+              <span class="hero-chip"><i data-lucide="smartphone" aria-hidden="true"></i> Mobile</span>
+              <span class="hero-chip"><i data-lucide="workflow" aria-hidden="true"></i> Automações</span>
+            </div>
+
+            <div class="hero__actions" data-hero-el="actions">
+              <a class="btn btn--primary hero__btn" href="#" data-whatsapp data-magnetic data-hero-btn target="_blank" rel="noopener noreferrer">
+                Solicitar orçamento
+                <i data-lucide="arrow-right" aria-hidden="true"></i>
+              </a>
+              <a class="btn btn--ghost hero__btn" href="#projetos" data-magnetic data-hero-btn>Ver trabalhos</a>
+            </div>
+          </div>
+
+          <div class="hero__side" data-hero-side aria-hidden="true">
+            <div class="hero__side-glow"></div>
+
+            <article class="hero-card hero-card--a" data-hero-float data-depth="14">
+              <div class="hero-card__icon"><i data-lucide="rocket" aria-hidden="true"></i></div>
+              <div>
+                <div class="hero-card__title">Deploy estável</div>
+                <p class="hero-card__desc">Entrega contínua com review e rollback.</p>
+              </div>
+            </article>
+
+            <article class="hero-dash" data-hero-dash data-depth="10">
+              <div class="hero-dash__shine" aria-hidden="true"></div>
+              <div class="hero-dash__edge" aria-hidden="true"></div>
+              <header class="hero-dash__head">
+                <div class="hero-dash__brand">
+                  <span class="hero-dash__orb"></span>
+                  <span>Operação</span>
+                </div>
+                <span class="hero-dash__status"><i></i> ao vivo</span>
+              </header>
+
+              <div class="hero-dash__chart" data-hero-bars>
+                <span style="--h:42%"></span>
+                <span style="--h:68%"></span>
+                <span style="--h:54%"></span>
+                <span style="--h:86%"></span>
+                <span style="--h:62%"></span>
+                <span style="--h:74%"></span>
+                <span style="--h:48%"></span>
+                <span style="--h:78%"></span>
+              </div>
+
+              <div class="hero-dash__progress">
+                <div class="hero-dash__progress-label">
+                  <span>Throughput</span>
+                  <strong data-hero-throughput>78%</strong>
+                </div>
+                <div class="hero-dash__track">
+                  <div class="hero-dash__fill" data-hero-fill></div>
+                </div>
+              </div>
+
+              <div class="hero-dash__metrics">
+                <div class="hero-dash__metric">
+                  <span>Latência</span>
+                  <strong data-hero-latency>42ms</strong>
+                </div>
+                <div class="hero-dash__metric">
+                  <span>Uptime</span>
+                  <strong data-hero-uptime>99.9%</strong>
+                </div>
+                <div class="hero-dash__metric">
+                  <span>Sprints</span>
+                  <strong>semanal</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="hero-card hero-card--b" data-hero-float data-depth="12">
+              <div class="hero-card__icon"><i data-lucide="code-2" aria-hidden="true"></i></div>
+              <div>
+                <div class="hero-card__title">Código sob medida</div>
+                <p class="hero-card__desc">Sem template engessado. Arquitetura do seu problema.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <a class="hero__scroll" href="#sobre" data-hero-el="scroll" aria-label="Rolar para o conteúdo">
+          <span class="hero__scroll-track" aria-hidden="true">
+            <span class="hero__scroll-dot"></span>
+          </span>
+          <span>Scroll</span>
+        </a>
+      </section>
+
+      <!-- CAPABILITIES STRIP -->
+      <section class="clients" aria-label="Capacidades">
+        <p class="clients__label">O que entregamos no dia a dia</p>
+        <div class="marquee" data-component="Marquee">
+          <div class="marquee__track">
+            <div class="marquee__item"><i data-lucide="layout-template"></i> Sites institucionais</div>
+            <div class="marquee__item"><i data-lucide="database"></i> APIs & bancos</div>
+            <div class="marquee__item"><i data-lucide="smartphone"></i> Apps Android/iOS</div>
+            <div class="marquee__item"><i data-lucide="bot"></i> Chatbots & IA</div>
+            <div class="marquee__item"><i data-lucide="shield-check"></i> Auth & segurança</div>
+            <div class="marquee__item"><i data-lucide="cloud"></i> Cloud & Docker</div>
+            <div class="marquee__item"><i data-lucide="workflow"></i> Automações</div>
+            <div class="marquee__item"><i data-lucide="line-chart"></i> Painéis & BI</div>
+            <div class="marquee__item"><i data-lucide="layout-template"></i> Sites institucionais</div>
+            <div class="marquee__item"><i data-lucide="database"></i> APIs & bancos</div>
+            <div class="marquee__item"><i data-lucide="smartphone"></i> Apps Android/iOS</div>
+            <div class="marquee__item"><i data-lucide="bot"></i> Chatbots & IA</div>
+            <div class="marquee__item"><i data-lucide="shield-check"></i> Auth & segurança</div>
+            <div class="marquee__item"><i data-lucide="cloud"></i> Cloud & Docker</div>
+            <div class="marquee__item"><i data-lucide="workflow"></i> Automações</div>
+            <div class="marquee__item"><i data-lucide="line-chart"></i> Painéis & BI</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section" id="sobre" data-component="About">
+        <div class="container about__grid">
+          <div class="about__text">
+            <p class="section__eyebrow reveal">Sobre</p>
+            <h2 class="section__title section__title--wide reveal">
+              Especialista em soluções digitais
+            </h2>
+            <p class="reveal">
+              Soluções digitais personalizadas para destacar negócios no mundo online.
+              Websites responsivos, landing pages otimizadas para conversão e aplicativos
+              de alto desempenho — sempre focados em resultado real.
+            </p>
+            <p class="reveal">
+              Combinamos tecnologia e design voltados às necessidades de cada cliente,
+              com comunicação direta e entregas que a operação consegue usar no dia a dia.
+            </p>
+          </div>
+          <div class="about__visual reveal" aria-hidden="true">
+            <div class="about__visual-inner">
+              <div class="about-tile">
+                <div>
+                  <div class="about-tile__value">01</div>
+                  <div class="about-tile__label">Descoberta antes do código</div>
+                </div>
+                <i data-lucide="search" style="width:28px;height:28px;color:var(--primary)"></i>
+              </div>
+              <div class="about-tile">
+                <div class="about-tile__value">02</div>
+                <div class="about-tile__label">Arquitetura explícita</div>
+              </div>
+              <div class="about-tile">
+                <div class="about-tile__value">03</div>
+                <div class="about-tile__label">Evolução contínua</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="section section--surface" id="servicos" data-component="Services">
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow reveal">Serviços</p>
+            <h2 class="section__title reveal">Serviços</h2>
+            <p class="section__subtitle reveal">
+              Do site à integração — o mesmo escopo que já entregamos em produção.
+            </p>
+          </header>
+
+          <div class="services__grid" data-services></div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section class="section" id="processo" data-component="Process">
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow reveal">Processo</p>
+            <h2 class="section__title reveal">Como o projeto anda</h2>
+            <p class="section__subtitle reveal">
+              Cinco etapas. Sem surpresa de escopo no meio do caminho.
+            </p>
+          </header>
+
+          <div class="process__track">
+            <div class="process__line" aria-hidden="true">
+              <div class="process__line-progress"></div>
+            </div>
+            <ol class="process__timeline">
+              <li class="process-step">
+                <div class="process-step__num">1</div>
+                <h3>Descoberta</h3>
+                <p>Entendimento do negócio.</p>
+              </li>
+              <li class="process-step">
+                <div class="process-step__num">2</div>
+                <h3>Planejamento</h3>
+                <p>Arquitetura da solução.</p>
+              </li>
+              <li class="process-step">
+                <div class="process-step__num">3</div>
+                <h3>Desenvolvimento</h3>
+                <p>Construção do projeto.</p>
+              </li>
+              <li class="process-step">
+                <div class="process-step__num">4</div>
+                <h3>Entrega</h3>
+                <p>Implantação e treinamento.</p>
+              </li>
+              <li class="process-step">
+                <div class="process-step__num">5</div>
+                <h3>Evolução</h3>
+                <p>Melhorias contínuas.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SHOWCASE -->
+      <section class="showcase" id="projetos" data-component="Projects">
+        <div class="showcase__bg" aria-hidden="true">
+          <div class="showcase__grid"></div>
+          <canvas id="showcase-canvas"></canvas>
+        </div>
+        <div class="showcase__inner">
+          <header class="showcase__header">
+            <p class="section__eyebrow reveal">Projetos</p>
+            <h2 class="section__title reveal">Trabalhos entregues</h2>
+            <p class="section__subtitle reveal">
+              Cada peça em destaque — engenharia, design e resultado em produção.
+            </p>
+          </header>
+          <div class="showcase__list" data-showcase></div>
+        </div>
+      </section>
+
+      <!-- DIFFERENTIALS -->
+      <section class="section" id="diferenciais" data-component="Differentials">
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow reveal">Diferenciais</p>
+            <h2 class="section__title reveal">O que muda na prática</h2>
+            <p class="section__subtitle reveal">
+              Menos discurso. Mais engenharia, previsibilidade e ownership do código.
+            </p>
+          </header>
+
+          <div class="diff__grid">
+            <article class="diff-card">
+              <div class="icon-badge"><i data-lucide="code-2"></i></div>
+              <h3>Stack sob medida</h3>
+              <p>Escolhemos a tecnologia pelo problema — não pela moda.</p>
+            </article>
+            <article class="diff-card">
+              <div class="icon-badge"><i data-lucide="git-branch"></i></div>
+              <h3>Código que escala</h3>
+              <p>Estrutura clara, versionada e preparada para o próximo ciclo.</p>
+            </article>
+            <article class="diff-card">
+              <div class="icon-badge"><i data-lucide="shield-check"></i></div>
+              <h3>Segurança no desenho</h3>
+              <p>Auth, permissões e boas práticas desde o primeiro commit.</p>
+            </article>
+            <article class="diff-card">
+              <div class="icon-badge"><i data-lucide="gauge"></i></div>
+              <h3>Performance real</h3>
+              <p>Medimos carga, latência e experiência — não só “fica bonito”.</p>
+            </article>
+            <article class="diff-card">
+              <div class="icon-badge"><i data-lucide="waypoints"></i></div>
+              <h3>Integrações</h3>
+              <p>ERP, CRM, pagamentos, APIs externas — conectados com critério.</p>
+            </article>
+            <article class="diff-card">
+              <div class="icon-badge"><i data-lucide="headset"></i></div>
+              <h3>Pós-entrega</h3>
+              <p>Manutenção, melhorias e evolução com o mesmo time técnico.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNOLOGIES -->
+      <section class="section section--surface" id="tecnologias" data-component="Technologies">
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow reveal">Stack</p>
+            <h2 class="section__title reveal">Ferramentas que usamos de verdade</h2>
+            <p class="section__subtitle reveal">
+              Do front ao cloud — o que for necessário para o produto sair estável.
+            </p>
+          </header>
+
+          <div class="tech-stage" data-tech-stage></div>
+          <div class="tech__cloud" data-skills></div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="section stats" data-component="Stats" aria-label="Estatísticas">
+        <div class="container">
+          <div class="stats__inner reveal">
+            <div class="stat">
+              <div class="stat__value" data-counter data-target="8" data-prefix="+" data-suffix="">0</div>
+              <div class="stat__label">Projetos no portfólio</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value" data-counter data-target="6" data-suffix="">0</div>
+              <div class="stat__label">Serviços principais</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value" data-counter data-target="12" data-suffix="">0</div>
+              <div class="stat__label">Tecnologias</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value">100%</div>
+              <div class="stat__label">Sob medida</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMITMENTS -->
+      <section class="section section--surface" id="compromissos" data-component="Commitments">
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow reveal">Parceria</p>
+            <h2 class="section__title reveal">Como trabalhamos com você</h2>
+            <p class="section__subtitle reveal">
+              Transparência no escopo, comunicação direta e ownership do produto.
+            </p>
+          </header>
+
+          <div class="testimonials__grid">
+            <article class="card testimonial">
+              <p class="testimonial__quote">
+                Escopo fechado por etapa, com priorização clara. Você sabe o que entra
+                na sprint — e o que fica para a próxima.
+              </p>
+              <div class="testimonial__author">
+                <div class="testimonial__avatar" aria-hidden="true"><i data-lucide="clipboard-list"></i></div>
+                <div>
+                  <div class="testimonial__name">Escopo previsível</div>
+                  <div class="testimonial__role">Sem surpresa no meio do caminho</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card testimonial">
+              <p class="testimonial__quote">
+                Canal direto com quem está codando. Decisões técnicas explicadas em
+                português — sem jargão para enrolar.
+              </p>
+              <div class="testimonial__author">
+                <div class="testimonial__avatar" aria-hidden="true"><i data-lucide="messages-square"></i></div>
+                <div>
+                  <div class="testimonial__name">Comunicação direta</div>
+                  <div class="testimonial__role">Time técnico acessível</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card testimonial">
+              <p class="testimonial__quote">
+                O código é seu. Repositório, documentação e handoff para o time interno
+                ou continuidade conosco — você escolhe.
+              </p>
+              <div class="testimonial__author">
+                <div class="testimonial__avatar" aria-hidden="true"><i data-lucide="key-round"></i></div>
+                <div>
+                  <div class="testimonial__name">Ownership real</div>
+                  <div class="testimonial__role">Sem lock-in de caixa-preta</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section cta" id="contato" data-component="CTA">
+        <div class="container">
+          <div class="cta__box reveal">
+            <h2 class="cta__title">Tem um problema. Vamos construir a solução.</h2>
+            <p class="cta__subtitle">
+              Conte o contexto em poucas linhas. Respondemos com próximo passo concreto —
+              escopo, prazo estimado e abordagem.
+            </p>
+            <div class="cta__actions">
+              <a
+                class="btn btn--primary"
+                href="#"
+                data-whatsapp
+                target="_blank"
+                rel="noopener noreferrer"
+                data-magnetic
+              >
+                Falar no WhatsApp
+                <i data-lucide="message-circle"></i>
+              </a>
+              <a class="btn btn--ghost" href="mailto:contato@prestei.com.br" data-magnetic>Enviar e-mail</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer" data-component="Footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a class="nav__logo" href="#inicio" aria-label="Prestei">
+              <img class="logo logo--light footer__logo" src="./assets/images/logo-light.png" alt="Prestei" width="140" height="38" />
+              <img class="logo logo--dark footer__logo" src="./assets/images/logo-dark.png" alt="" width="140" height="38" aria-hidden="true" />
+            </a>
+            <p>
+              Engenharia de software sob demanda — web, sistemas, apps e IA aplicada.
+            </p>
+            <div class="footer__social">
+              <a href="#" data-whatsapp target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <i data-lucide="message-circle"></i>
+              </a>
+              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i data-lucide="instagram"></i>
+              </a>
+              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i data-lucide="linkedin"></i>
+              </a>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i data-lucide="github"></i>
+              </a>
+              <a href="mailto:contato@prestei.com.br" aria-label="E-mail">
+                <i data-lucide="mail"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer__col">
+            <h4>Links rápidos</h4>
+            <a href="#sobre">Sobre</a>
+            <a href="#processo">Processo</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#diferenciais">Diferenciais</a>
+            <a href="#compromissos">Parceria</a>
+          </div>
+
+          <div class="footer__col">
+            <h4>Serviços</h4>
+            <a href="#servicos">Página Web</a>
+            <a href="#servicos">Sistemas</a>
+            <a href="#servicos">Aplicativos</a>
+            <a href="#servicos">Inteligência Artificial</a>
+            <a href="#servicos">Gestão de Projetos</a>
+          </div>
+
+          <div class="footer__col">
+            <h4>Contato</h4>
+            <a href="mailto:contato@prestei.com.br">contato@prestei.com.br</a>
+            <a href="#" data-whatsapp target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="#contato">Solicitar orçamento</a>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <span>© <span data-year></span> Prestei. Todos os direitos reservados.</span>
+          <span data-cnpj></span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./js/boot.js"></script>
+  </body>
+</html>

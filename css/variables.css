@@ -1,0 +1,75 @@
+:root {
+  /* Brand — ink first, cyan só como acento (logo) */
+  --accent: #2ea8e6;
+  --accent-strong: #1b8fc9;
+  --accent-soft: rgba(46, 168, 230, 0.1);
+  --primary: #121212;
+  --primary-hover: #2a2a2a;
+  --primary-soft: rgba(18, 18, 18, 0.06);
+  --secondary: #121212;
+  --accent-gradient: linear-gradient(135deg, #2ea8e6 0%, #7ec8ea 100%);
+  --success: #3d8b5f;
+
+  /* Surfaces — papel quente discreto, sem cream “IA” */
+  --bg: #fafaf8;
+  --bg-elevated: #ffffff;
+  --surface: #f1efea;
+  --surface-hover: #e8e5df;
+  --glass: rgba(250, 250, 248, 0.78);
+  --glass-border: rgba(18, 18, 18, 0.08);
+
+  /* Text */
+  --text: #121212;
+  --text-secondary: #5a5a56;
+  --text-muted: #8a8a84;
+  --text-inverse: #fafaf8;
+
+  /* UI */
+  --border: #e2e0da;
+  --border-strong: #c9c6be;
+  --shadow-sm: 0 1px 2px rgba(18, 18, 18, 0.05);
+  --shadow-md: 0 10px 28px rgba(18, 18, 18, 0.07), 0 2px 6px rgba(18, 18, 18, 0.04);
+  --shadow-lg: 0 28px 56px rgba(18, 18, 18, 0.1), 0 8px 16px rgba(18, 18, 18, 0.05);
+  --shadow-glow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 10px 28px rgba(18, 18, 18, 0.18);
+
+  /* Layout */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --container: 1160px;
+  --nav-h: 72px;
+  --section-y: clamp(4.5rem, 8vw, 7.5rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 300ms;
+
+  /* Typography */
+  --font: "Manrope", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Syne", "Manrope", var(--font);
+  --tracking-tight: -0.03em;
+  --tracking-display: -0.05em;
+}
+
+[data-theme="dark"] {
+  --bg: #0b0b0b;
+  --bg-elevated: #141414;
+  --surface: #171717;
+  --surface-hover: #1f1f1f;
+  --glass: rgba(11, 11, 11, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text: #f4f4f2;
+  --text-secondary: #a3a39c;
+  --text-muted: #6f6f69;
+  --border: #2a2a2a;
+  --border-strong: #3d3d3d;
+  --primary: #f4f4f2;
+  --primary-hover: #ffffff;
+  --primary-soft: rgba(244, 244, 242, 0.08);
+  --secondary: #f4f4f2;
+  --text-inverse: #0b0b0b;
+  --accent-soft: rgba(46, 168, 230, 0.14);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 28px 56px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 12px 32px rgba(0, 0, 0, 0.45);
+}
