@@ -316,130 +316,7 @@ main,
   box-shadow: var(--shadow-md);
 }
 
-/* ===== Tech orbit ===== */
-.tech-stage {
-  position: relative;
-  min-height: 420px;
-  display: grid;
-  place-items: center;
-  margin-top: 1rem;
-}
-
-.tech-stage__core {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-md);
-  z-index: 2;
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--primary);
-}
-
-.tech-stage__ring {
-  position: absolute;
-  border: 1px dashed color-mix(in srgb, var(--border) 80%, var(--primary));
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.tech-stage__ring--1 { width: 260px; height: 260px; }
-.tech-stage__ring--2 { width: 380px; height: 380px; opacity: 0.7; }
-
-.tech-orbit {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 380px;
-  height: 380px;
-  animation: techSpin 48s linear infinite;
-}
-
-.tech-orbit--reverse {
-  width: 260px;
-  height: 260px;
-  animation-direction: reverse;
-  animation-duration: 36s;
-}
-
-.tech-sat {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  transform: rotate(var(--a)) translateX(var(--r));
-}
-
-.tech-chip {
-  position: absolute;
-  left: 0;
-  top: 0;
-  translate: -50% -50%;
-  padding: 0.45rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  white-space: nowrap;
-  will-change: transform;
-  animation: techSpin 48s linear infinite reverse;
-}
-
-.tech-orbit--reverse .tech-chip {
-  animation-direction: normal;
-  animation-duration: 36s;
-}
-
-.tech-chip:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  z-index: 3;
-}
-
-@keyframes techSpin {
-  to { transform: rotate(360deg); }
-}
-
-.tech__cloud {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .tech-stage {
-    min-height: auto;
-    display: block;
-  }
-  .tech-stage__core,
-  .tech-stage__ring,
-  .tech-orbit {
-    display: none;
-  }
-  .tech__cloud {
-    display: flex;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .tech-orbit,
-    .tech-chip {
-      animation: none !important;
-    }
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tech-orbit,
-  .tech-chip,
-  .atmosphere__glow {
-    animation: none !important;
-  }
-}
+/* ===== Tech orbit styles live in css/tech.css ===== */
 
 /* ===== Project hover ===== */
 .project-card__media {
@@ -503,10 +380,6 @@ main,
 }
 
 /* ===== Section micro-effects ===== */
-.section__eyebrow {
-  position: relative;
-}
-
 .section {
   overflow: clip;
 }
@@ -556,15 +429,6 @@ main,
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
-.tech-stage__core {
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
-}
-
-.tech-stage__core:hover {
-  transform: scale(1.04);
-  box-shadow: var(--shadow-lg);
-}
-
 .clients {
   position: relative;
 }
@@ -573,9 +437,9 @@ main,
 .clients::after {
   content: "";
   position: absolute;
-  top: 0;
+  top: 2.8rem;
   bottom: 0;
-  width: 64px;
+  width: min(12vw, 100px);
   z-index: 2;
   pointer-events: none;
 }
@@ -600,11 +464,14 @@ main,
 
 @media (prefers-reduced-motion: reduce) {
   .about-tile,
+  .process-card,
   .service-card .icon-badge,
   .diff-card .icon-badge,
   .stat,
-  .tech-stage__core {
+  .tech-stage__core,
+  .atmosphere__glow {
     transition: none;
+    animation: none !important;
   }
 }
 

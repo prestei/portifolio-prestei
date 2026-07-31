@@ -114,6 +114,16 @@
 
     const items = document.querySelectorAll(".showcase-item");
     if (!items.length) return;
+    if (document.documentElement.dataset.showcaseMotion === "1") {
+      // Ainda assim, garantir loaders resolvidos se re-chamado
+      items.forEach((item) => {
+        const frame = item.querySelector(".tech-frame");
+        const img = item.querySelector(".tech-frame__viewport img");
+        if (frame && img && (img.complete || img.naturalWidth)) frame.classList.add("is-loaded");
+      });
+      return;
+    }
+    document.documentElement.dataset.showcaseMotion = "1";
 
     if (reduce()) {
       items.forEach((item) => {
@@ -135,7 +145,7 @@
       const path = item.querySelector(".tech-frame__path");
       const reverse = item.classList.contains("showcase-item--reverse");
       const parts = info?.querySelectorAll(
-        ".showcase-item__index, .showcase-item__cat, .showcase-item__title, .showcase-item__desc, .showcase-item__tech, .btn"
+        ".showcase-item__cat, .showcase-item__title, .showcase-item__desc, .showcase-item__tech, .btn"
       );
 
       // Border draw with anime / gsap
@@ -216,16 +226,12 @@
 
         if (img.complete && img.naturalWidth > 0) {
           markLoaded();
-        } else {
-          // Retrigger in case lazy/deferred fetch stalled at opacity/visibility edge cases
-          const src = img.getAttribute("src");
-          if (src) img.setAttribute("src", src);
-          if (typeof img.decode === "function") {
-            img.decode().then(markLoaded).catch(() => {});
-          }
+        } else if (typeof img.decode === "function") {
+          img.decode().then(markLoaded).catch(() => {});
         }
 
-        window.setTimeout(markLoaded, 3500);
+        // Fallback curto — não segurar spinner por segundos
+        window.setTimeout(markLoaded, 1200);
       }
 
       // Hover — Motion.dev spring or GSAP

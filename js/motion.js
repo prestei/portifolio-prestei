@@ -126,6 +126,151 @@
     });
   };
 
+  window.initTechOrbit = function initTechOrbit() {
+    const gsap = window.gsap;
+    const ScrollTrigger = window.ScrollTrigger;
+    const stage = document.querySelector("[data-tech-stage]");
+    const section = document.querySelector(".tech-section");
+    if (!gsap || !ScrollTrigger || !stage || !section) return;
+    if (stage.dataset.orbitReady === "1") return;
+    stage.dataset.orbitReady = "1";
+
+    const reduced = reduce();
+    const chips = stage.querySelectorAll(".tech-chip");
+    const orbits = [
+      { name: "outer", dir: 1, duration: 100 },
+      { name: "mid", dir: -1, duration: 78 },
+      { name: "inner", dir: 1, duration: 58 },
+    ];
+
+    const tweens = [];
+    let spinning = false;
+
+    const startSpin = () => {
+      if (spinning || reduced) return;
+      spinning = true;
+      orbits.forEach(({ name, dir, duration }) => {
+        const orbit = stage.querySelector(`[data-orbit="${name}"]`);
+        if (!orbit) return;
+        const spin = orbit.querySelector(".tech-orbit__spin");
+        const orbitFaces = orbit.querySelectorAll(".tech-chip__face");
+        if (spin) {
+          tweens.push(
+            gsap.to(spin, {
+              rotation: 360 * dir,
+              duration,
+              ease: "none",
+              repeat: -1,
+            })
+          );
+        }
+        if (orbitFaces.length) {
+          tweens.push(
+            gsap.to(orbitFaces, {
+              rotation: -360 * dir,
+              duration,
+              ease: "none",
+              repeat: -1,
+            })
+          );
+        }
+      });
+      stage.querySelectorAll(".tech-orbit__spin").forEach((spin) => {
+        gsap.set(spin, { transformOrigin: "50% 50%" });
+      });
+      stage.querySelectorAll(".tech-chip__face").forEach((face) => {
+        gsap.set(face, { transformOrigin: "50% 50%" });
+      });
+    };
+
+    const setSpeed = (scale) => {
+      tweens.forEach((t) => t.timeScale(scale));
+    };
+
+    chips.forEach((chip) => {
+      const orbit = chip.closest(".tech-orbit");
+      const activate = () => {
+        stage.classList.add("is-focus");
+        chip.classList.add("is-active");
+        orbit?.classList.add("is-active");
+        if (!reduced) setSpeed(0.18);
+      };
+      const deactivate = () => {
+        stage.classList.remove("is-focus");
+        chip.classList.remove("is-active");
+        stage.querySelectorAll(".tech-orbit.is-active").forEach((o) => o.classList.remove("is-active"));
+        if (!reduced) setSpeed(1);
+      };
+      chip.addEventListener("pointerenter", activate);
+      chip.addEventListener("pointerleave", deactivate);
+      chip.addEventListener("focus", activate);
+      chip.addEventListener("blur", deactivate);
+    });
+
+    const playEntrance = () => {
+      startSpin();
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(".tech-copy > *", {
+        y: 20,
+        opacity: 0,
+        duration: reduced ? 0.3 : 0.55,
+        stagger: 0.08,
+        immediateRender: false,
+      })
+        .from(
+          ".tech-stage__core",
+          {
+            scale: 0.92,
+            opacity: 0,
+            duration: reduced ? 0.25 : 0.5,
+            clearProps: "transform",
+            immediateRender: false,
+          },
+          "-=0.3"
+        )
+        .from(
+          ".tech-orbit__ring",
+          {
+            opacity: 0,
+            duration: reduced ? 0.25 : 0.45,
+            stagger: 0.08,
+            immediateRender: false,
+          },
+          "-=0.35"
+        )
+        .from(
+          ".tech-chip__body",
+          {
+            scale: 0.9,
+            opacity: 0,
+            duration: reduced ? 0.2 : 0.35,
+            stagger: 0.025,
+            ease: "power2.out",
+            clearProps: "transform",
+            immediateRender: false,
+          },
+          "-=0.3"
+        )
+        .from(
+          ".tech-legend",
+          {
+            y: 10,
+            opacity: 0,
+            duration: 0.35,
+            immediateRender: false,
+          },
+          "-=0.15"
+        );
+    };
+
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top 80%",
+      once: true,
+      onEnter: playEntrance,
+    });
+  };
+
   window.initMotion = function initMotion() {
     const gsap = window.gsap;
     const ScrollTrigger = window.ScrollTrigger;
@@ -139,6 +284,7 @@
         opacity: 1,
         y: 0,
       });
+      window.initTechOrbit();
       return;
     }
 
@@ -168,62 +314,68 @@
     if (window.Motion) runMotion();
     else window.addEventListener("motion:ready", runMotion, { once: true });
 
-    // Scroll reveals
+    // Scroll reveals — never leave content stuck at opacity 0
     gsap.utils.toArray(".reveal").forEach((el) => {
       const words = el.querySelectorAll(".split-word");
       if (words.length) {
         gsap.from(words, {
-          scrollTrigger: { trigger: el, start: "top 88%" },
+          scrollTrigger: { trigger: el, start: "top 90%", once: true },
           y: "110%",
           opacity: 0,
-          duration: 0.7,
-          stagger: 0.028,
+          duration: 0.55,
+          stagger: 0.02,
           ease: "power3.out",
+          immediateRender: false,
         });
       } else {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: "top 88%" },
-          y: 36,
+          scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          y: 28,
           opacity: 0,
-          filter: "blur(6px)",
-          duration: 0.8,
+          duration: 0.55,
           ease: "power3.out",
+          immediateRender: false,
         });
       }
     });
 
     gsap.from(".service-card", {
-      scrollTrigger: { trigger: "[data-services]", start: "top 80%" },
-      y: 48,
+      scrollTrigger: { trigger: "[data-services]", start: "top 80%", once: true },
+      y: 40,
       opacity: 0,
-      duration: 0.7,
-      stagger: 0.09,
+      duration: 0.55,
+      stagger: 0.07,
       ease: "power3.out",
+      immediateRender: false,
     });
 
     gsap.from(".showcase__header .section__eyebrow, .showcase__header .section__title, .showcase__header .section__subtitle", {
-      scrollTrigger: { trigger: ".showcase", start: "top 78%" },
-      y: 28,
+      scrollTrigger: { trigger: ".showcase", start: "top 78%", once: true },
+      y: 24,
       opacity: 0,
-      duration: 0.7,
-      stagger: 0.08,
+      duration: 0.55,
+      stagger: 0.06,
       ease: "power3.out",
+      immediateRender: false,
     });
 
     gsap.from(".diff-card", {
-      scrollTrigger: { trigger: ".diff__grid", start: "top 82%" },
-      y: 40,
+      scrollTrigger: { trigger: ".diff__grid", start: "top 82%", once: true },
+      y: 32,
       opacity: 0,
-      duration: 0.65,
-      stagger: 0.08,
+      duration: 0.5,
+      stagger: 0.06,
+      ease: "power3.out",
+      immediateRender: false,
     });
 
     gsap.from(".testimonial", {
-      scrollTrigger: { trigger: ".testimonials__grid", start: "top 82%" },
-      y: 40,
+      scrollTrigger: { trigger: ".testimonials__grid", start: "top 82%", once: true },
+      y: 32,
       opacity: 0,
-      duration: 0.7,
-      stagger: 0.1,
+      duration: 0.55,
+      stagger: 0.08,
+      immediateRender: false,
     });
 
     // Process timeline grow
@@ -256,67 +408,86 @@
       });
     });
 
-    // Tech chips entrance via anime
-    if (anime) {
-      const chips = document.querySelectorAll(".tech-chip");
-      if (chips.length) {
-        ScrollTrigger.create({
-          trigger: ".tech-stage",
-          start: "top 80%",
-          once: true,
-          onEnter: () => {
-            anime({
-              targets: chips,
-              scale: [0.6, 1],
-              opacity: [0, 1],
-              delay: anime.stagger(40),
-              duration: 600,
-              easing: "easeOutElastic(1, .7)",
-            });
-          },
-        });
-      }
-    }
+    // Tech orbit — entrance + continuous spin
+    window.initTechOrbit?.();
 
-    // Counters with bounce
+    // Counters — fast, only when entering viewport
     gsap.utils.toArray("[data-counter]").forEach((el) => {
       const target = Number(el.getAttribute("data-target") || 0);
       const prefix = el.getAttribute("data-prefix") || "";
       const suffix = el.getAttribute("data-suffix") || "";
-      const obj = { val: 0 };
+      const obj = { val: target };
       ScrollTrigger.create({
         trigger: el,
-        start: "top 85%",
+        start: "top 90%",
         once: true,
         onEnter: () => {
+          obj.val = 0;
+          el.textContent = `${prefix}0${suffix}`;
           gsap.to(obj, {
             val: target,
-            duration: 1.7,
-            ease: "power3.out",
+            duration: 0.9,
+            ease: "power2.out",
             onUpdate: () => {
               el.textContent = `${prefix}${Math.round(obj.val)}${suffix}`;
-            },
-            onComplete: () => {
-              if (anime) {
-                anime({
-                  targets: el,
-                  scale: [1, 1.06, 1],
-                  duration: 500,
-                  easing: "easeOutElastic(1, .6)",
-                });
-              }
             },
           });
         },
       });
     });
 
-    // Marquee
-    const track = document.querySelector(".marquee__track");
-    if (track) {
-      const tween = gsap.to(track, { xPercent: -50, duration: 30, ease: "none", repeat: -1 });
-      track.parentElement?.addEventListener("pointerenter", () => tween.timeScale(0.35));
-      track.parentElement?.addEventListener("pointerleave", () => tween.timeScale(1));
+    // Marquee — seamless loop + pause + center emphasis
+    const marquee = document.querySelector("[data-marquee]");
+    const track = document.querySelector("[data-marquee-track]");
+    if (marquee && track && track.children.length && marquee.dataset.marqueeReady !== "1") {
+      marquee.dataset.marqueeReady = "1";
+      const durationVar = getComputedStyle(document.querySelector(".clients") || marquee)
+        .getPropertyValue("--marquee-duration")
+        .trim();
+      const duration = Number.parseFloat(durationVar) || 48;
+      const mobile = window.matchMedia("(max-width: 640px)").matches;
+      const loopDuration = mobile ? Math.max(duration, 60) : duration;
+
+      if (!reduce()) {
+        const tween = gsap.to(track, {
+          xPercent: -50,
+          duration: loopDuration,
+          ease: "none",
+          repeat: -1,
+        });
+
+        const softPause = () => gsap.to(tween, { timeScale: 0, duration: 0.45, ease: "power2.out", overwrite: true });
+        const softResume = () => gsap.to(tween, { timeScale: 1, duration: 0.55, ease: "power2.out", overwrite: true });
+
+        marquee.addEventListener("pointerenter", softPause);
+        marquee.addEventListener("pointerleave", softResume);
+      }
+
+      const items = () => Array.from(track.querySelectorAll("[data-marquee-item]"));
+      let raf = 0;
+      const updateCenter = () => {
+        const mid = window.innerWidth * 0.5;
+        let best = null;
+        let bestDist = Infinity;
+        items().forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const center = rect.left + rect.width * 0.5;
+          const dist = Math.abs(center - mid);
+          el.classList.toggle("is-near", dist < window.innerWidth * 0.28);
+          if (dist < bestDist) {
+            bestDist = dist;
+            best = el;
+          }
+        });
+        items().forEach((el) => el.classList.toggle("is-center", el === best));
+        raf = requestAnimationFrame(updateCenter);
+      };
+      raf = requestAnimationFrame(updateCenter);
+      window.addEventListener(
+        "beforeunload",
+        () => cancelAnimationFrame(raf),
+        { once: true }
+      );
     }
 
     // Nav progress + active section
@@ -345,44 +516,49 @@
     gsap.utils.toArray(".section, .clients, .stats, .cta").forEach((section) => {
       const eyebrow = section.querySelector(".section__eyebrow");
       const subtitle = section.querySelector(".section__subtitle");
-      if (eyebrow) {
+      // Evita animar 2x quando já tem .reveal
+      if (eyebrow && !eyebrow.classList.contains("reveal")) {
         gsap.from(eyebrow, {
-          scrollTrigger: { trigger: section, start: "top 82%" },
-          x: -16,
+          scrollTrigger: { trigger: section, start: "top 82%", once: true },
+          x: -12,
           opacity: 0,
-          duration: 0.55,
+          duration: 0.5,
           ease: "power2.out",
+          immediateRender: false,
         });
       }
       if (subtitle && !subtitle.classList.contains("reveal")) {
         gsap.from(subtitle, {
-          scrollTrigger: { trigger: section, start: "top 80%" },
+          scrollTrigger: { trigger: section, start: "top 80%", once: true },
           y: 18,
           opacity: 0,
-          duration: 0.65,
-          delay: 0.08,
+          duration: 0.55,
+          delay: 0.06,
           ease: "power2.out",
+          immediateRender: false,
         });
       }
     });
 
-    // About tiles + visual
-    gsap.from(".about-tile", {
-      scrollTrigger: { trigger: ".about__visual", start: "top 80%" },
-      y: 32,
+    // About process board
+    gsap.from(".process-card", {
+      scrollTrigger: { trigger: "[data-process-board]", start: "top 80%", once: true },
+      y: 28,
       opacity: 0,
-      scale: 0.96,
-      duration: 0.65,
-      stagger: 0.12,
+      duration: 0.55,
+      stagger: 0.1,
       ease: "power3.out",
+      immediateRender: false,
     });
 
-    if (desktop()) {
-      gsap.to(".about__visual", {
-        scrollTrigger: { trigger: "#sobre", start: "top bottom", end: "bottom top", scrub: true },
-        y: -36,
-      });
-    }
+    gsap.from(".process-board__badge, .process-board__arrow", {
+      scrollTrigger: { trigger: "[data-process-board]", start: "top 80%", once: true },
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.08,
+      ease: "power2.out",
+      immediateRender: false,
+    });
 
     // Service icons micro pop
     gsap.utils.toArray(".service-card .icon-badge").forEach((badge, i) => {
@@ -406,22 +582,22 @@
 
     // Stats panel
     gsap.from(".stats__inner", {
-      scrollTrigger: { trigger: ".stats", start: "top 78%" },
-      y: 40,
+      scrollTrigger: { trigger: ".stats", start: "top 78%", once: true },
+      y: 32,
       opacity: 0,
-      scale: 0.98,
-      duration: 0.8,
+      duration: 0.55,
       ease: "power3.out",
+      immediateRender: false,
     });
 
     // CTA
     gsap.from(".cta__box", {
-      scrollTrigger: { trigger: ".cta", start: "top 80%" },
-      y: 48,
+      scrollTrigger: { trigger: ".cta", start: "top 80%", once: true },
+      y: 32,
       opacity: 0,
-      scale: 0.97,
-      duration: 0.85,
+      duration: 0.55,
       ease: "power3.out",
+      immediateRender: false,
     });
 
     // Footer soft fade
@@ -431,36 +607,6 @@
       opacity: 0,
       duration: 0.55,
       stagger: 0.08,
-      ease: "power2.out",
-    });
-
-    // Tech core pulse when in view
-    const techCore = document.querySelector(".tech-stage__core");
-    if (techCore && anime) {
-      ScrollTrigger.create({
-        trigger: ".tech-stage",
-        start: "top 75%",
-        once: true,
-        onEnter: () => {
-          anime({
-            targets: techCore,
-            scale: [0.85, 1],
-            opacity: [0, 1],
-            duration: 700,
-            easing: "easeOutElastic(1, .7)",
-          });
-        },
-      });
-    }
-
-    // Badge cloud (mobile / fallback) stagger
-    gsap.from(".tech__cloud .badge", {
-      scrollTrigger: { trigger: ".tech__cloud", start: "top 88%" },
-      y: 14,
-      opacity: 0,
-      scale: 0.92,
-      duration: 0.4,
-      stagger: { each: 0.03, from: "center" },
       ease: "power2.out",
     });
 

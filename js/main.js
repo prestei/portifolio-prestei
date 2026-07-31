@@ -39,9 +39,6 @@
     const root = document.querySelector("[data-showcase]");
     if (!root || !data.projects.length) return;
 
-    const pad = (n) => String(n).padStart(2, "0");
-    const total = data.projects.length;
-
     root.innerHTML = data.projects
       .map((p, i) => {
         const reverse = i % 2 === 1 ? " showcase-item--reverse" : "";
@@ -63,12 +60,19 @@
             </svg>
             <div class="tech-frame__viewport">
               <div class="tech-frame__loader" aria-hidden="true"><span></span></div>
-              <img src="${p.image}" alt="${p.title}" loading="eager" decoding="async" width="960" height="660" />
+              <img
+                src="${p.image}"
+                alt="${p.title}"
+                loading="${i < 2 ? "eager" : "lazy"}"
+                decoding="async"
+                fetchpriority="${i === 0 ? "high" : "low"}"
+                width="960"
+                height="660"
+              />
             </div>
           </div>
         </div>
         <div class="showcase-item__info">
-          <span class="showcase-item__index">${pad(i + 1)} — ${pad(total)}</span>
           <span class="showcase-item__cat">${p.category}</span>
           <div class="showcase-item__meta-line" aria-hidden="true"></div>
           <h3 class="showcase-item__title">${p.title}</h3>
@@ -86,48 +90,85 @@
   function renderSkills() {
     const cloud = document.querySelector("[data-skills]");
     const stage = document.querySelector("[data-tech-stage]");
+    const stack = data.stack;
+    const skills = data.skills || [];
+
     if (cloud) {
-      cloud.innerHTML = data.skills
+      const midItems = stack?.mid?.map((t) => t.name) || [];
+      const cloudItems = midItems.length ? midItems : skills;
+      cloud.innerHTML = cloudItems
         .map((s) => `<span class="badge"><span class="badge__dot"></span>${s}</span>`)
         .join("");
     }
-    if (!stage) return;
 
-    const half = Math.ceil(data.skills.length / 2);
-    const outer = data.skills.slice(0, half);
-    const inner = data.skills.slice(half);
+    if (!stage || !stack) return;
 
-    const place = (items, radiusPx) =>
-      items
-        .map((label, i) => {
-          const angle = (360 / items.length) * i;
-          return `<div class="tech-sat" style="--a:${angle}deg; --r:${radiusPx}px"><span class="tech-chip">${label}</span></div>`;
+    const glyphs = {
+      React: "Re",
+      "Next.js": "Nx",
+      Laravel: "La",
+      "Node.js": "No",
+      TypeScript: "TS",
+      PHP: "Ph",
+      Python: "Py",
+      Git: "Git",
+      Angular: "Ng",
+      MongoDB: "Mo",
+      MySQL: "My",
+      CSS3: "Cs",
+      HTML5: "Ht",
+      JavaScript: "JS",
+    };
+
+    const placeOrbit = (items, orbitName) => {
+      const n = items.length || 1;
+      const sats = items
+        .map((item, i) => {
+          const angle = (360 / n) * i - 90;
+          const glyph = glyphs[item.name] || item.name.slice(0, 2);
+          return `
+          <div class="tech-sat" style="--a:${angle}deg">
+            <button
+              type="button"
+              class="tech-chip"
+              data-tech="${item.name}"
+              aria-label="${item.name}: ${item.tip}"
+            >
+              <span class="tech-chip__face">
+                <span class="tech-chip__body">
+                  <span class="tech-chip__glyph" aria-hidden="true">${glyph}</span>
+                  <span class="tech-chip__label">${item.name}</span>
+                </span>
+                <span class="tech-chip__tip" role="tooltip">${item.tip}</span>
+              </span>
+            </button>
+          </div>`;
         })
         .join("");
 
+      return `
+        <div class="tech-orbit tech-orbit--${orbitName}" data-orbit="${orbitName}">
+          <div class="tech-orbit__spin">
+            <div class="tech-orbit__ring" aria-hidden="true"></div>
+            <span class="tech-orbit__pulse" aria-hidden="true"></span>
+            <span class="tech-orbit__pulse tech-orbit__pulse--b" aria-hidden="true"></span>
+            ${sats}
+          </div>
+        </div>`;
+    };
+
     stage.innerHTML = `
-      <div class="tech-stage__ring tech-stage__ring--1" aria-hidden="true"></div>
-      <div class="tech-stage__ring tech-stage__ring--2" aria-hidden="true"></div>
-      <div class="tech-stage__core">Prestei</div>
-      <div class="tech-orbit tech-orbit--reverse">${place(inner, 118)}</div>
-      <div class="tech-orbit">${place(outer, 178)}</div>
+      <div class="tech-stage__glow" aria-hidden="true"></div>
+      ${placeOrbit(stack.outer, "outer")}
+      ${placeOrbit(stack.mid, "mid")}
+      ${placeOrbit(stack.inner, "inner")}
+      <div class="tech-stage__core" aria-hidden="true">Prestei</div>
     `;
   }
 
   function renderCnpj() {
     document.querySelectorAll("[data-cnpj]").forEach((el) => {
       el.textContent = `CNPJ ${data.cnpj}`;
-    });
-  }
-
-  function initTheme() {
-    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const cur = document.documentElement.getAttribute("data-theme") || "light";
-        const next = cur === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("prestei-theme", next);
-      });
     });
   }
 
@@ -174,13 +215,29 @@
     });
   }
 
+  function renderCapabilities() {
+    const track = document.querySelector("[data-marquee-track]");
+    if (!track || !data.capabilities?.length) return;
+
+    const makeItem = (item, key) => `
+      <span class="marquee__item" data-marquee-item data-id="${item.id}" data-key="${key}">
+        <i data-lucide="${item.icon}" aria-hidden="true"></i>
+        <span class="marquee__item-label">${item.name}</span>
+      </span>`;
+
+    // Two identical sets → seamless loop at xPercent -50
+    const setA = data.capabilities.map((item, i) => makeItem(item, `a-${i}`)).join("");
+    const setB = data.capabilities.map((item, i) => makeItem(item, `b-${i}`)).join("");
+    track.innerHTML = setA + setB;
+  }
+
   function bootApp() {
+    renderCapabilities();
     renderServices();
     renderProjects();
     renderSkills();
     renderCnpj();
     waLinks();
-    initTheme();
     initNav();
     initAnchors();
 
@@ -189,10 +246,12 @@
     });
 
     if (window.lucide) window.lucide.createIcons();
-    // Hero text first; Three.js / showcase when lib ready
+
     requestAnimationFrame(() => {
       if (window.initHeroExperience) window.initHeroExperience();
       if (window.initMotion) window.initMotion();
+      // Showcase motion ASAP — não esperar Three.js (evita spinner travado)
+      if (window.initShowcaseMotion) window.initShowcaseMotion();
 
       const startHeavy = () => {
         if (window.initThreeHero) {
@@ -200,7 +259,6 @@
           document.body.dataset.hero3d = "ready";
         }
         if (window.initShowcaseBg) window.initShowcaseBg();
-        if (window.initShowcaseMotion) window.initShowcaseMotion();
       };
 
       if (window.initThreeHero && window.THREE) {
@@ -217,9 +275,5 @@
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", bootApp);
-  } else {
-    bootApp();
-  }
+  window.initPresteiApp = bootApp;
 })();

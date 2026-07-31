@@ -4,24 +4,38 @@ window.PRESTEI_DATA = {
     "Olá! Vim através do site da Prestei e gostaria de saber mais sobre os serviços.",
   email: "contato@prestei.com.br",
   cnpj: "66.974.341/0001-76",
+  capabilities: [
+    { id: "sites", name: "Sites institucionais", icon: "monitor" },
+    { id: "sistemas", name: "Sistemas sob medida", icon: "layers" },
+    { id: "web-apps", name: "Aplicações web", icon: "app-window" },
+    { id: "mobile", name: "Aplicativos mobile", icon: "smartphone" },
+    { id: "automacao", name: "Automação de processos", icon: "workflow" },
+    { id: "ia", name: "Inteligência artificial", icon: "brain" },
+    { id: "api", name: "Integrações via API", icon: "cable" },
+    { id: "bi", name: "Dashboards & BI", icon: "line-chart" },
+    { id: "cloud", name: "Cloud & infraestrutura", icon: "cloud" },
+    { id: "seguranca", name: "Segurança digital", icon: "shield-check" },
+    { id: "dados", name: "Bancos de dados", icon: "database" },
+    { id: "chatbots", name: "Chatbots inteligentes", icon: "bot" },
+  ],
   services: [
     {
       title: "Desenvolvimento Websites",
       description:
         "Criação de sites responsivos, otimizados e com foco na experiência do usuário.",
-      icon: "layout-template",
+      icon: "monitor",
     },
     {
       title: "Manutenção de Websites",
       description:
         "Suporte contínuo para manter seu site atualizado, seguro e eficiente.",
-      icon: "wrench",
+      icon: "refresh-cw",
     },
     {
       title: "Sistemas Personalizados",
       description:
         "Soluções sob medida para otimizar processos e agregar valor ao seu negócio.",
-      icon: "panels-top-left",
+      icon: "server",
     },
     {
       title: "Criação de Aplicativos",
@@ -33,13 +47,13 @@ window.PRESTEI_DATA = {
       title: "Integrações de Sistemas",
       description:
         "Conexão eficiente entre plataformas, garantindo uma comunicação sem falhas.",
-      icon: "waypoints",
+      icon: "cable",
     },
     {
       title: "Design UX/UI",
       description:
         "Criação de interfaces intuitivas e atraentes para melhorar a experiência do usuário.",
-      icon: "palette",
+      icon: "pen-tool",
     },
   ],
   projects: [
@@ -47,7 +61,7 @@ window.PRESTEI_DATA = {
       title: "Plataforma Online de Cardápio",
       description:
         "Plataforma online para cardápios, com cálculo de frete automático, integração Pix e design atrativo.",
-      image: "./assets/images/projects/site-menu.png",
+      image: "./assets/images/projects/site-menu.webp",
       category: "Plataforma",
       color: "#d61f1f",
       tech: ["HTML", "CSS", "JavaScript", "Integrações"],
@@ -56,7 +70,7 @@ window.PRESTEI_DATA = {
       title: "Website para Advogado Criminal",
       description:
         "Site responsivo destacando atuação em direito penal, com design profissional e navegação otimizada.",
-      image: "./assets/images/projects/site-nerio.png",
+      image: "./assets/images/projects/site-nerio.webp",
       category: "Institucional",
       color: "#c9a36a",
       tech: ["HTML", "CSS", "JavaScript", "SEO"],
@@ -65,7 +79,7 @@ window.PRESTEI_DATA = {
       title: "Landing Page — Agência Pira",
       description:
         "Landing page visualmente impactante, criada para transmitir a mensagem da Agência Pira.",
-      image: "./assets/images/projects/site-pira.png",
+      image: "./assets/images/projects/site-pira.webp",
       category: "Landing Page",
       color: "#fb3d3d",
       tech: ["HTML", "CSS", "JavaScript"],
@@ -74,7 +88,7 @@ window.PRESTEI_DATA = {
       title: "Plataforma MW",
       description:
         "Protótipo no Figma focado em UI/UX para vendas de licenças de software, com implementação do layout.",
-      image: "./assets/images/projects/site-mw.png",
+      image: "./assets/images/projects/site-mw.webp",
       category: "Produto · UI/UX",
       color: "#d61f1f",
       tech: ["Figma", "HTML", "CSS", "JavaScript"],
@@ -117,17 +131,97 @@ window.PRESTEI_DATA = {
     },
   ],
   skills: [
-    "HTML5",
-    "CSS3",
-    "JavaScript",
-    "PHP",
     "React",
-    "Angular",
-    "Vue.js",
-    "Express",
+    "Next.js",
     "Laravel",
-    "MongoDB",
+    "Node.js",
+    "TypeScript",
+    "PHP",
+    "Python",
     "Git",
-    "Figma",
+    "Angular",
+    "MongoDB",
+    "MySQL",
+    "CSS3",
+    "HTML5",
+    "JavaScript",
   ],
+  stack: {
+    inner: [
+      {
+        name: "React",
+        slug: "react",
+        tip: "Interfaces modernas e interativas.",
+      },
+      {
+        name: "Next.js",
+        slug: "nextdotjs",
+        tip: "Apps React com SSR e performance.",
+      },
+      {
+        name: "Laravel",
+        slug: "laravel",
+        tip: "Back-end robusto e organizado.",
+      },
+      {
+        name: "Node.js",
+        slug: "nodedotjs",
+        tip: "APIs e aplicações escaláveis.",
+      },
+    ],
+    mid: [
+      {
+        name: "TypeScript",
+        slug: "typescript",
+        tip: "Tipagem estática para código mais seguro.",
+      },
+      {
+        name: "PHP",
+        slug: "php",
+        tip: "Backend consolidado e flexível.",
+      },
+      {
+        name: "Python",
+        slug: "python",
+        tip: "Automação, dados e integrações.",
+      },
+      {
+        name: "Git",
+        slug: "git",
+        tip: "Versionamento e colaboração em equipe.",
+      },
+    ],
+    outer: [
+      {
+        name: "Angular",
+        slug: "angular",
+        tip: "Aplicações enterprise estruturadas.",
+      },
+      {
+        name: "MongoDB",
+        slug: "mongodb",
+        tip: "Banco de dados flexível para aplicações modernas.",
+      },
+      {
+        name: "MySQL",
+        slug: "mysql",
+        tip: "Dados relacionais confiáveis.",
+      },
+      {
+        name: "CSS3",
+        slug: "css3",
+        tip: "Interfaces responsivas e polidas.",
+      },
+      {
+        name: "HTML5",
+        slug: "html5",
+        tip: "Estrutura semântica e acessível.",
+      },
+      {
+        name: "JavaScript",
+        slug: "javascript",
+        tip: "Interatividade e lógica no cliente.",
+      },
+    ],
+  },
 };
