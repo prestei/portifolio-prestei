@@ -1,3 +1,6 @@
+const asset = (path) =>
+  `${import.meta.env.BASE_URL}${String(path).replace(/^\//, "")}`;
+
 window.PRESTEI_DATA = {
   whatsapp: "5575983331375",
   whatsappMessage:
@@ -61,7 +64,7 @@ window.PRESTEI_DATA = {
       title: "Plataforma Online de Cardápio",
       description:
         "Plataforma online para cardápios, com cálculo de frete automático, integração Pix e design atrativo.",
-      image: "./assets/images/projects/site-menu.webp",
+      image: asset("assets/images/projects/site-menu.webp"),
       category: "Plataforma",
       color: "#d61f1f",
       tech: ["HTML", "CSS", "JavaScript", "Integrações"],
@@ -70,7 +73,7 @@ window.PRESTEI_DATA = {
       title: "Website para Advogado Criminal",
       description:
         "Site responsivo destacando atuação em direito penal, com design profissional e navegação otimizada.",
-      image: "./assets/images/projects/site-nerio.webp",
+      image: asset("assets/images/projects/site-nerio.webp"),
       category: "Institucional",
       color: "#c9a36a",
       tech: ["HTML", "CSS", "JavaScript", "SEO"],
@@ -79,7 +82,7 @@ window.PRESTEI_DATA = {
       title: "Landing Page — Agência Pira",
       description:
         "Landing page visualmente impactante, criada para transmitir a mensagem da Agência Pira.",
-      image: "./assets/images/projects/site-pira.webp",
+      image: asset("assets/images/projects/site-pira.webp"),
       category: "Landing Page",
       color: "#fb3d3d",
       tech: ["HTML", "CSS", "JavaScript"],
@@ -88,7 +91,7 @@ window.PRESTEI_DATA = {
       title: "Plataforma MW",
       description:
         "Protótipo no Figma focado em UI/UX para vendas de licenças de software, com implementação do layout.",
-      image: "./assets/images/projects/site-mw.webp",
+      image: asset("assets/images/projects/site-mw.webp"),
       category: "Produto · UI/UX",
       color: "#d61f1f",
       tech: ["Figma", "HTML", "CSS", "JavaScript"],
@@ -97,7 +100,7 @@ window.PRESTEI_DATA = {
       title: "VFM Topografia",
       description:
         "Site institucional com serviços, portfólio e formulário de contato para a VFM Topografia.",
-      image: "./assets/images/projects/site-vfmtopografia.webp",
+      image: asset("assets/images/projects/site-vfmtopografia.webp"),
       category: "Institucional",
       color: "#e69752",
       tech: ["HTML", "CSS", "JavaScript"],
@@ -106,7 +109,7 @@ window.PRESTEI_DATA = {
       title: "Dra. Miriã Ruiz",
       description:
         "Página de apresentação para médica especializada em cosmiatria, com foco em estética e confiança.",
-      image: "./assets/images/projects/site-dramiriaruiz.webp",
+      image: asset("assets/images/projects/site-dramiriaruiz.webp"),
       category: "Landing Page",
       color: "#b39a8b",
       tech: ["HTML", "CSS", "JavaScript"],
@@ -115,7 +118,7 @@ window.PRESTEI_DATA = {
       title: "Dr. Fernando Baratella",
       description:
         "Site profissional com foco em tratamentos capilares, identidade visual e agendamento online.",
-      image: "./assets/images/projects/site-drfernandobaratella.webp",
+      image: asset("assets/images/projects/site-drfernandobaratella.webp"),
       category: "Institucional",
       color: "#2a3b4d",
       tech: ["HTML", "CSS", "JavaScript"],
@@ -124,7 +127,7 @@ window.PRESTEI_DATA = {
       title: "Maxime Administração Judicial",
       description:
         "Página de portfólio voltada para campanhas no Google Ads, destacando diferenciais com clareza.",
-      image: "./assets/images/projects/site-maximeadiministracaojudicial.webp",
+      image: asset("assets/images/projects/site-maximeadiministracaojudicial.webp"),
       category: "Performance · Ads",
       color: "#011c1a",
       tech: ["HTML", "CSS", "JavaScript", "SEO"],
