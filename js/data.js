@@ -67,7 +67,6 @@ window.PRESTEI_DATA = {
       image: asset("assets/images/projects/site-menu.webp"),
       category: "Plataforma",
       color: "#d61f1f",
-      tech: ["HTML", "CSS", "JavaScript", "Integrações"],
     },
     {
       title: "Website para Advogado Criminal",
@@ -76,7 +75,6 @@ window.PRESTEI_DATA = {
       image: asset("assets/images/projects/site-nerio.webp"),
       category: "Institucional",
       color: "#c9a36a",
-      tech: ["HTML", "CSS", "JavaScript", "SEO"],
     },
     {
       title: "Landing Page — Agência Pira",
@@ -85,7 +83,6 @@ window.PRESTEI_DATA = {
       image: asset("assets/images/projects/site-pira.webp"),
       category: "Landing Page",
       color: "#fb3d3d",
-      tech: ["HTML", "CSS", "JavaScript"],
     },
     {
       title: "Plataforma MW",
@@ -94,7 +91,6 @@ window.PRESTEI_DATA = {
       image: asset("assets/images/projects/site-mw.webp"),
       category: "Produto · UI/UX",
       color: "#d61f1f",
-      tech: ["Figma", "HTML", "CSS", "JavaScript"],
     },
     {
       title: "VFM Topografia",
@@ -103,7 +99,6 @@ window.PRESTEI_DATA = {
       image: asset("assets/images/projects/site-vfmtopografia.webp"),
       category: "Institucional",
       color: "#e69752",
-      tech: ["HTML", "CSS", "JavaScript"],
     },
     {
       title: "Dra. Miriã Ruiz",
@@ -112,7 +107,6 @@ window.PRESTEI_DATA = {
       image: asset("assets/images/projects/site-dramiriaruiz.webp"),
       category: "Landing Page",
       color: "#b39a8b",
-      tech: ["HTML", "CSS", "JavaScript"],
     },
     {
       title: "Dr. Fernando Baratella",
@@ -121,7 +115,6 @@ window.PRESTEI_DATA = {
       image: asset("assets/images/projects/site-drfernandobaratella.webp"),
       category: "Institucional",
       color: "#2a3b4d",
-      tech: ["HTML", "CSS", "JavaScript"],
     },
     {
       title: "Maxime Administração Judicial",
@@ -130,7 +123,6 @@ window.PRESTEI_DATA = {
       image: asset("assets/images/projects/site-maximeadiministracaojudicial.webp"),
       category: "Performance · Ads",
       color: "#011c1a",
-      tech: ["HTML", "CSS", "JavaScript", "SEO"],
     },
   ],
   skills: [

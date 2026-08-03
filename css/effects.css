@@ -112,7 +112,6 @@ body.is-cursor-hover .cursor__ring {
 }
 
 main,
-.nav,
 .footer {
   position: relative;
   z-index: 1;

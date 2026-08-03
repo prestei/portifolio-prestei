@@ -102,6 +102,7 @@
   display: none;
   position: fixed;
   inset: var(--nav-h) 0 auto;
+  z-index: 101;
   padding: 1rem 1.25rem 1.5rem;
   background: var(--glass);
   backdrop-filter: blur(20px);

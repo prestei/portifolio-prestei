@@ -30,11 +30,6 @@
       .join("");
   }
 
-  function projectWa(title) {
-    const msg = `Olá! Vim através do site da Prestei e gostaria de saber mais sobre o projeto "${title}".`;
-    return `https://wa.me/${data.whatsapp}?text=${encodeURIComponent(msg)}`;
-  }
-
   function renderProjects() {
     const root = document.querySelector("[data-showcase]");
     if (!root || !data.projects.length) return;
@@ -42,7 +37,6 @@
     root.innerHTML = data.projects
       .map((p, i) => {
         const reverse = i % 2 === 1 ? " showcase-item--reverse" : "";
-        const tech = p.tech.map((t) => `<span>${t}</span>`).join("");
         return `
       <article class="showcase-item${reverse}" data-showcase-item>
         <div class="showcase-item__media">
@@ -77,10 +71,6 @@
           <div class="showcase-item__meta-line" aria-hidden="true"></div>
           <h3 class="showcase-item__title">${p.title}</h3>
           <p class="showcase-item__desc">${p.description}</p>
-          <div class="showcase-item__tech">${tech}</div>
-          <a class="btn btn--primary" href="${projectWa(p.title)}" target="_blank" rel="noopener noreferrer" data-magnetic>
-            Ver Projeto <i data-lucide="arrow-up-right"></i>
-          </a>
         </div>
       </article>`;
       })

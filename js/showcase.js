@@ -145,7 +145,7 @@
       const path = item.querySelector(".tech-frame__path");
       const reverse = item.classList.contains("showcase-item--reverse");
       const parts = info?.querySelectorAll(
-        ".showcase-item__cat, .showcase-item__title, .showcase-item__desc, .showcase-item__tech, .btn"
+        ".showcase-item__cat, .showcase-item__title, .showcase-item__desc"
       );
 
       // Border draw with anime / gsap
@@ -200,13 +200,16 @@
       }
 
       if (parts?.length) {
+        const mobile = window.matchMedia("(max-width: 960px)").matches;
         tl.from(
           parts,
           {
-            y: 22,
+            ...(mobile ? {} : { y: 18 }),
             opacity: 0,
             duration: 0.55,
             stagger: 0.08,
+            immediateRender: false,
+            clearProps: "transform",
           },
           "-=0.45"
         );
