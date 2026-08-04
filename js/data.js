@@ -61,12 +61,14 @@ window.PRESTEI_DATA = {
   ],
   projects: [
     {
-      title: "Plataforma Online de Cardápio",
+      title: "Cardápio Integrado",
       description:
-        "Plataforma online para cardápios, com cálculo de frete automático, integração Pix e design atrativo.",
+        "Ecossistema SaaS multi-tenant para food service: painel administrativo, cardápio público em tempo real, pedidos, KDS, caixa, promoções, relatórios, PIX/cartão online, Maps, favoritos e pedidos agendados — API única em Node.js + PostgreSQL.",
       image: asset("assets/images/projects/site-menu.webp"),
-      category: "Plataforma",
-      color: "#d61f1f",
+      category: "SaaS · Food Tech",
+      color: "#F2A94A",
+      url: "https://github.com/prestei/cardapio-integrado",
+      cta: "Ver no GitHub",
     },
     {
       title: "Website para Advogado Criminal",
@@ -137,6 +139,8 @@ window.PRESTEI_DATA = {
     "Angular",
     "MongoDB",
     "MySQL",
+    "PostgreSQL",
+    "Prisma",
     "CSS3",
     "HTML5",
     "JavaScript",

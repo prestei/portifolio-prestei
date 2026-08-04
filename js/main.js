@@ -71,6 +71,13 @@
           <div class="showcase-item__meta-line" aria-hidden="true"></div>
           <h3 class="showcase-item__title">${p.title}</h3>
           <p class="showcase-item__desc">${p.description}</p>
+          ${
+            p.url
+              ? `<a class="btn btn--primary btn--sm" href="${p.url}" target="_blank" rel="noopener noreferrer">${
+                  p.cta || "Ver projeto"
+                }</a>`
+              : ""
+          }
         </div>
       </article>`;
       })
