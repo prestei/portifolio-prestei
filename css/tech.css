@@ -6,7 +6,7 @@
   --tech-r-mid: 205px;
   --tech-r-outer: 275px;
   --tech-stage: min(100%, 620px);
-  --tech-chip-w: 7.1rem;
+  --tech-chip-w: 8.75rem;
   --tech-chip-h: 2.55rem;
   --tech-ring: color-mix(in srgb, var(--accent) 22%, rgba(255, 255, 255, 0.08));
   --tech-ring-strong: color-mix(in srgb, var(--accent) 42%, rgba(255, 255, 255, 0.14));
@@ -254,14 +254,17 @@
   justify-content: center;
   gap: 0.4rem;
   width: var(--tech-chip-w);
-  height: var(--tech-chip-h);
-  padding: 0 0.65rem;
+  min-height: var(--tech-chip-h);
+  height: auto;
+  padding: 0.4rem 0.55rem;
   border-radius: 11px;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
   color: #e8e8e4;
-  white-space: nowrap;
+  white-space: normal;
   background: linear-gradient(180deg, #171b20 0%, #12161a 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
@@ -288,8 +291,13 @@
 }
 
 .tech-chip__label {
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  text-overflow: unset;
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .tech-chip__tip {
@@ -419,8 +427,8 @@
     --tech-r-inner: 124px;
     --tech-r-mid: 178px;
     --tech-r-outer: 238px;
-    --tech-chip-w: 6.5rem;
-    --tech-chip-h: 2.35rem;
+    --tech-chip-w: 8rem;
+    --tech-chip-h: 2.45rem;
   }
 
   .tech-layout {
@@ -448,7 +456,7 @@
     --tech-r-inner: 112px;
     --tech-r-mid: 160px;
     --tech-r-outer: 214px;
-    --tech-chip-w: 6.1rem;
+    --tech-chip-w: 7.5rem;
     --tech-stage: min(100%, 480px);
   }
 
@@ -463,8 +471,8 @@
     --tech-r-inner: 108px;
     --tech-r-mid: 0px;
     --tech-r-outer: 168px;
-    --tech-chip-w: 5.6rem;
-    --tech-chip-h: 2.2rem;
+    --tech-chip-w: 6.9rem;
+    --tech-chip-h: 2.35rem;
     --tech-stage: min(100%, 360px);
     padding-block: clamp(4rem, 12vw, 5.5rem);
   }
@@ -483,9 +491,10 @@
   }
 
   .tech-chip__body {
-    font-size: 0.66rem;
+    font-size: 0.62rem;
     gap: 0.3rem;
-    padding: 0 0.45rem;
+    padding: 0.35rem 0.4rem;
+    line-height: 1.15;
   }
 
   .tech-chip__glyph {

@@ -93,29 +93,11 @@
 
     if (!stage || !stack) return;
 
-    const glyphs = {
-      React: "Re",
-      "Next.js": "Nx",
-      Laravel: "La",
-      "Node.js": "No",
-      TypeScript: "TS",
-      PHP: "Ph",
-      Python: "Py",
-      Git: "Git",
-      Angular: "Ng",
-      MongoDB: "Mo",
-      MySQL: "My",
-      CSS3: "Cs",
-      HTML5: "Ht",
-      JavaScript: "JS",
-    };
-
     const placeOrbit = (items, orbitName) => {
       const n = items.length || 1;
       const sats = items
         .map((item, i) => {
           const angle = (360 / n) * i - 90;
-          const glyph = glyphs[item.name] || item.name.slice(0, 2);
           return `
           <div class="tech-sat" style="--a:${angle}deg">
             <button
@@ -126,7 +108,6 @@
             >
               <span class="tech-chip__face">
                 <span class="tech-chip__body">
-                  <span class="tech-chip__glyph" aria-hidden="true">${glyph}</span>
                   <span class="tech-chip__label">${item.name}</span>
                 </span>
                 <span class="tech-chip__tip" role="tooltip">${item.tip}</span>
