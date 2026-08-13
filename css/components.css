@@ -170,8 +170,8 @@
 /* Floating WhatsApp */
 .wa-float {
   position: fixed;
-  right: max(1.1rem, env(safe-area-inset-right, 0px));
-  bottom: max(1.1rem, env(safe-area-inset-bottom, 0px));
+  right: 1.75rem;
+  bottom: 2.5rem;
   z-index: 90;
   width: 56px;
   height: 56px;
@@ -214,8 +214,8 @@
   .wa-float {
     width: 52px;
     height: 52px;
-    right: max(0.9rem, env(safe-area-inset-right, 0px));
-    bottom: max(0.9rem, env(safe-area-inset-bottom, 0px));
+    right: 1.5rem;
+    bottom: 5.5rem;
   }
 
   .wa-float svg {

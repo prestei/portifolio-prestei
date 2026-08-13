@@ -201,18 +201,22 @@
 
       if (parts?.length) {
         const mobile = window.matchMedia("(max-width: 960px)").matches;
-        tl.from(
-          parts,
-          {
-            ...(mobile ? {} : { y: 18 }),
-            opacity: 0,
-            duration: 0.55,
-            stagger: 0.08,
-            immediateRender: false,
-            clearProps: "transform",
-          },
-          "-=0.45"
-        );
+        if (mobile) {
+          gsap.set(parts, { clearProps: "transform", opacity: 1 });
+        } else {
+          tl.from(
+            parts,
+            {
+              y: 18,
+              opacity: 0,
+              duration: 0.55,
+              stagger: 0.08,
+              immediateRender: false,
+              clearProps: "transform",
+            },
+            "-=0.45"
+          );
+        }
       }
 
       // Image load — never leave the spinner stuck
