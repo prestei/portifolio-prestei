@@ -86,9 +86,11 @@
     if (cloud) {
       const midItems = stack?.mid?.map((t) => t.name) || [];
       const cloudItems = midItems.length ? midItems : skills;
-      cloud.innerHTML = cloudItems
+      const badges = cloudItems
         .map((s) => `<span class="badge"><span class="badge__dot"></span>${s}</span>`)
         .join("");
+      // Duplica o conjunto para loop contínuo no carrossel mobile
+      cloud.innerHTML = `<div class="tech__cloud-track" aria-hidden="true">${badges}${badges}</div>`;
     }
 
     if (!stage || !stack) return;
